@@ -11,12 +11,12 @@ export default async function decorate(block) {
       const articleDiv = document.createElement('div');
       articleDiv.classList.add('article-item');
       const link = document.createElement('a');
-      link.href = row.url;
+      link.href = row.path;
       const img = document.createElement('img');
       img.src = row.image;
       img.alt = row.name;
       const title = document.createElement('h3');
-      title.textContent = row.name;
+      title.textContent = row.title;
       const paragraph = document.createElement('p');
       paragraph.textContent = row.description;
 
