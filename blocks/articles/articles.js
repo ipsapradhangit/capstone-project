@@ -1,36 +1,57 @@
+async function fetchArticles(url) {
+  try {
+    const response = await fetch(url);
+    const dataArticle = await response.json();
+    return dataArticle.data.filter((item) => item.template === 'capstone-magazine');
+  } catch (error) {
+    console.error('Failed to fetch articles:', error);
+    return [];
+  }
+}
+function createArticleElements(articles) {
+  const fragment = document.createDocumentFragment();
+
+  articles.forEach((article) => {
+    // Create elements
+    const articleDiv = document.createElement('div');
+    articleDiv.classList.add('article-item');
+
+    const link = document.createElement('a');
+    link.href = article.path;
+
+    const img = document.createElement('img');
+    img.src = article.image;
+    img.alt = article.name;
+
+    const title = document.createElement('h3');
+    title.textContent = article.title;
+
+    const paragraph = document.createElement('p');
+    paragraph.textContent = article.description;
+    link.appendChild(img);
+    link.appendChild(title);
+    articleDiv.appendChild(link);
+    articleDiv.appendChild(paragraph);
+
+    // Append to fragment
+    fragment.appendChild(articleDiv);
+  });
+
+  return fragment;
+}
+
 export default async function decorate(block) {
   console.log('text', block);
-  const articles = block.querySelector('a[href$=".json"]');
+
+  const articlesLink = block.querySelector('a[href$=".json"]');
+
+  // Function to load and display articles
   async function loadArticles() {
-    const resp = await fetch(articles.href);
-    const json = await resp.json();
-
-    const magazine = json.data.filter((item) => item.template === 'capstone-magazine');
-    magazine.forEach((row) => {
-      // Create the elements
-      const articleDiv = document.createElement('div');
-      articleDiv.classList.add('article-item');
-      const link = document.createElement('a');
-      link.href = row.path;
-      const img = document.createElement('img');
-      img.src = row.image;
-      img.alt = row.name;
-      const title = document.createElement('h3');
-      title.textContent = row.title;
-      const paragraph = document.createElement('p');
-      paragraph.textContent = row.description;
-
-      // Append the elements to their parents
-      link.appendChild(img);
-      link.appendChild(title);
-      articleDiv.appendChild(link);
-      articleDiv.appendChild(paragraph);
-      block.appendChild(articleDiv);
-      articles.replaceWith();
-    });
+    const articles = await fetchArticles(articlesLink.href);
+    const articleElements = createArticleElements(articles);
+    block.textContent = '';
+    block.appendChild(articleElements);
   }
 
-  if (articles) {
-    loadArticles();
-  }
+  await loadArticles();
 }
