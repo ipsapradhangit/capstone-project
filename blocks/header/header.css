@@ -93,7 +93,7 @@ header .button-container a.button:any-link {
 }
 
 /* Tablet and Smaller Desktop */
-@media (min-width: 600px) {
+@media (min-width: 599px) {
   footer .footer > div {
     padding: 32px 24px;
   }
