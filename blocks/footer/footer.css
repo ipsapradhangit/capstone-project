@@ -40,6 +40,21 @@ footer .footer-nav ul {
   list-style: none;
 }
 
+@media (width >= 600px) {
+  footer .footer > div {
+    padding: 40px 32px 24px; 
+  }
+
+  footer .footer-top ul {
+    margin: 18px 0 0; 
+    justify-content: center; 
+  }
+
+  footer .footer-top ul li a {
+    padding: 10px 12px 0; 
+  }
+}
+
 footer .footer-nav ul li a {
   font-size: var(--body-font-size-xs);
   color: var(--light-color);

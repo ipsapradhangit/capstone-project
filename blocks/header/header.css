@@ -92,6 +92,23 @@ header .button-container a.button:any-link {
   padding: 0;
 }
 
+/* Tablet and Smaller Desktop */
+
+@media (width >= 600px) {
+  footer .footer > div {
+    padding: 32px 24px;
+  }
+
+  footer .footer-nav ul {
+    margin: 0 0 10px;
+  }
+
+  footer .footer-nav ul li a {
+    font-size: var(--body-font-size-xs);
+    padding: 10px 15px;
+  }
+}
+
 /* hamburger */
 header nav .nav-hamburger {
   grid-area: hamburger;
