@@ -1,3 +1,4 @@
+/* Base Styles for All Screens */
 footer {
   background-color: var(--text-color);
   font-size: var(--body-font-size-xs);
@@ -22,6 +23,7 @@ footer .footer a {
 
 footer .footer-nav div {
   display: flex;
+  align-items: center;
 }
 
 footer .footer-nav p {
@@ -55,8 +57,76 @@ footer .footer-details {
   margin-top: 40px;
 }
 
-@media (width >= 900px) {
+/* Desktop Styles */
+@media (min-width: 1100px) {
   footer .footer > div {
-    padding: 16px 32px;
+    padding: 40px 32px 24px;
+  }
+
+  footer .footer-nav ul {
+    margin: 0 0 0 20px;
+  }
+}
+
+/* Tablet and Small Desktop */
+@media (max-width: 900px) {
+  footer .footer > div {
+    padding: 24px 16px;
+  }
+
+  footer .footer-nav {
+    display: block;
+    text-align: center;
+  }
+
+  footer .footer-nav div {
+    justify-content: center;
+    margin-bottom: 20px;
+  }
+
+  footer .footer-nav ul {
+    display: block;
+    margin: 0;
+    padding: 0;
+  }
+
+  footer .footer-nav ul li {
+    margin-bottom: 10px;
+  }
+
+  footer .footer-nav ul li a {
+    font-size: var(--body-font-size-xs);
+    padding: 10px 0;
+  }
+
+  footer .footer-nav img {
+    width: 100px;
+    margin-bottom: 20px;
+  }
+
+  footer .footer-details {
+    margin-top: 20px;
+    text-align: center;
+  }
+}
+
+/* Mobile Devices */
+@media (max-width: 600px) {
+  footer .footer > div {
+    padding: 16px 8px;
+  }
+
+  footer .footer p {
+    font-size: var(--body-font-size-xxs);
+    line-height: 1.5;
+  }
+
+  footer .footer-nav ul li a {
+    font-size: var(--body-font-size-xxs);
+    padding: 8px 0;
+  }
+
+  footer .footer-nav img {
+    width: 80px;
   }
 }
